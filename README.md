@@ -21,4 +21,20 @@ This is a [Code Institute](https://codeinstitute.net/) code along project design
 
 ---
 
+## Creating the database
+
+- create the new `models.py` file within the taskmanager package. In it, create 2 separate tables, Category and Task
+- import the 2 classes for the tables in `routes.py`
+- create taskmanager database: 
+    - `set-pg`
+    - `psql`
+    - `CREATE DATABASE taskmanager`
+- use Python to generate and migrate the 2 models into `taskmanager` database.
+*__Important__ - if you modify the models later, then you'll need to migrate these changes each time the file is updated with new context.*
+    - access the Python interpreter by typing `python3`
+    - import the 'db' variable found within the taskmanager package: `>>> from taskmanager import db`
+    - perform the .create_all() method: `>>> db.create_all()`
+
+---
+
 *Disclaimer: this is a code along project from [Code Institute](https://codeinstitute.net/)'s **Database Management Systems** module*
