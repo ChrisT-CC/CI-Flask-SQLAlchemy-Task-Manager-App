@@ -30,10 +30,34 @@ This is a [Code Institute](https://codeinstitute.net/) code along project design
     - `psql`
     - `CREATE DATABASE taskmanager`
 - use Python to generate and migrate the 2 models into `taskmanager` database.
+
 *__Important__ - if you modify the models later, then you'll need to migrate these changes each time the file is updated with new context.*
+
     - access the Python interpreter by typing `python3`
     - import the 'db' variable found within the taskmanager package: `>>> from taskmanager import db`
     - perform the .create_all() method: `>>> db.create_all()`
+    - exit the Python interpreter: `>>> exit()`
+
+---
+Collapse 
+## Template inheritance
+
+Creating the front-end user interface in [Materialize](https://materializecss.com/) to interact with the database. Template inheritance was used to extend the html templates, to avoid duplicating code.
+- add the CDN link and script tags from the [Materialize 'Getting Started' page](https://materializecss.com/getting-started.html) to `base.html`
+- create folder structure for static files. (taskmanager > static > css and js folders)
+- link static files to `base.html` using the correct syntax:
+    - `{{ url_for('static_folder', filename='path/filename' ) }}`
+- add components from Materialize
+    - a mobile collapse navbar - initialize side navbar in js
+    - a footer - create sticky footer in css
+- start using template inheritance functionality using [jinja](https://palletsprojects.com/p/jinja/) blocks to inject content
+```
+{% extends "base_template_file" %}
+
+{% block content %}
+    *Insert content here* 
+{% endblock %}
+```
 
 ---
 
