@@ -83,7 +83,7 @@ Building the front-end template that allows to add new categories to the databas
 
 ## Viewing categories
 
-Once a category is cretated we need to be able to display it to the user in the "categories" page. To do that we need to create the "read" functionality.
+Once a category is cretated we need to be able to display it to the user in the "categories" page. To do that we need to create the "Read" functionality.
 
 - from Materialize, import the code for "basic card" into `categories.html`
 - adapt the code to suit the project
@@ -141,6 +141,13 @@ The `add_task.html` template will trigger the form to submit via the `add_task()
 ---
 
 ## Viewing tasks
+
+Once a Task is cretated we need to be able to display it to the user in the "Home" page. To do that we need to create the "Read" functionality.
+
+- in `routes.py` modify the `home()` function to extract all of the tasks from our database
+- in `tasks.html` template import code for collapsables form Materialize and adapt it accordingly
+- in `tasks.html` template use Jinja syntax of for-loop to iterate over each task within our list of all tasks
+- in `script.js` initialize "collapsibles" elements form Materialize
 
 ---
 
