@@ -61,4 +61,21 @@ Creating the front-end user interface in [Materialize](https://materializecss.co
 
 ---
 
+## Adding categories
+
+Before tasks can be added to the database, we need to have some functionality that handles the categories. 
+
+Building the front-end template that then allows to add new categories to the database.
+- create `categories.html` and `add_category.html` templates
+- extend the 2 templates from `base.html` template
+- create a button that will link the form to add a new category in `categories.html`
+- in `routes.py` create a functions that will generate `add_category` and `categories` templates
+- create the form to add a category to the database
+    - import Materialize text imput code and adjust accordingly
+    - create an input field for `category name`
+    - create an `ADD CATEGORY` submit button
+- in `routes.py` create the `POST` method functionality
+
+---
+
 *Disclaimer: this is a code along project from [Code Institute](https://codeinstitute.net/)'s **Database Management Systems** module*

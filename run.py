@@ -1,4 +1,4 @@
-# Import os in order to utilize environment variables within this file
+""" Import os in order to utilize environment variables within this file """
 import os
 from taskmanager import app
 
