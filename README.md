@@ -72,7 +72,7 @@ Building the front-end template that allows to add new categories to the databas
 - create a button that will link the form to add a new category in `categories.html`
 - in `routes.py` create a functions that will generate `add_category` and `categories` templates
 - create the form to add a category to the database
-    - import Materialize text imput code and adjust accordingly
+    - import Materialize text input code and adjust accordingly
     - create an input field for `category name`
     - create an `ADD CATEGORY` submit button
 - in `routes.py` create the `POST` method functionality
@@ -99,6 +99,7 @@ Once a category is cretated we need to be able to display it to the user in the 
 ## Updating categories
 
 Now that we have the ability to create and retrieve categories, we need to be able to update a category as well.
+
 - duplicate `add_category.html` into `edit_category.html` and modify it accordingly
 - in `routes.py` create `edit_category()` function
 - in `edit_category.html` modify the "EDIT" button link to `url_for` syntax with 2 args
@@ -107,8 +108,25 @@ Now that we have the ability to create and retrieve categories, we need to be ab
 - in `routes.py` modify `app.route` to add `category_id` as integer in square brakets
 - in `edit_category.html` add `category_id` to the link
 - in `routes.py` define the `category` variable so that the function knows which specific category to load
-- in `edit_category.html` add `value="{{ category.category_name }}"` to the imput field
+- in `edit_category.html` add `value="{{ category.category_name }}"` to the input field
 - in `routes.py` create the `POST` method functionality
+
+*__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
+---
+
+## Deleting categories
+
+Now that we have 3 of the 4 CRUD functionalities, to Create, Read, and Update records from our database, we need to give the users the ability to delete a category.
+
+- in `routes.py` create `delete_category()` function and get the required functionality from `edit_category()`
+- in `categories.html` update the href link to use `url_for` syntax with the same 2 args like edit button
+
+*__Important__*
+- *don't forget to use `set_pg` before you start the app with `python3 run.py`*
+- *once the delete button is clicked, it will __completely delete__ the record from the database and this is considered __bad practice__. Therefore __defensive programming__ and __user authentication__ should be considered.*
+
+
 
 ---
 
