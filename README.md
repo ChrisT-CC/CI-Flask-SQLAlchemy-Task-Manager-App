@@ -96,4 +96,20 @@ Once a category is cretated we need to be able to display it to the user in the 
 
 ---
 
+## Updating categories
+
+Now that we have the ability to create and retrieve categories, we need to be able to update a category as well.
+- duplicate `add_category.html` into `edit_category.html` and modify it accordingly
+- in `routes.py` create `edit_category()` function
+- in `edit_category.html` modify the "EDIT" button link to `url_for` syntax with 2 args
+    - 1st arg: `edit_category` - points to `edit_category()`
+    - 2nd arg: `category_id=category.id` - to specify to the app which category to update
+- in `routes.py` modify `app.route` to add `category_id` as integer in square brakets
+- in `edit_category.html` add `category_id` to the link
+- in `routes.py` define the `category` variable so that the function knows which specific category to load
+- in `edit_category.html` add `value="{{ category.category_name }}"` to the imput field
+- in `routes.py` create the `POST` method functionality
+
+---
+
 *Disclaimer: this is a code along project from [Code Institute](https://codeinstitute.net/)'s **Database Management Systems** module*

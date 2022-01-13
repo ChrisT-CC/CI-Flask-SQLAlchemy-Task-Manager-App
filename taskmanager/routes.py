@@ -33,3 +33,20 @@ def add_category():
         # 'categories' page
         return redirect(url_for("categories"))
     return render_template("add_category.html")
+
+
+@app.route("/edit_category/<int:category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    """ update the Category text in the Database """
+    # create the "category" variable, so that the function to know which
+    # specific category to load by using '.get_or_404(category_id)', which
+    # queries the db and attempts to find the specified record using the data
+    # provided, and if no match is found, it will trigger a 404 error page
+    category = Category.query.get_or_404(category_id)
+    # "POST" method functionality
+    if request.method == "POST":
+        category.category_name = request.form.get("category_name")
+        db.session.commit()
+        return redirect(url_for("categories"))
+    # "GET" method functionality
+    return render_template("edit_category.html", category=category)
