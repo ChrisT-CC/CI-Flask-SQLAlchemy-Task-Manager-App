@@ -126,7 +126,21 @@ Now that we have 3 of the 4 CRUD functionalities, to Create, Read, and Update re
 - *don't forget to use `set_pg` before you start the app with `python3 run.py`*
 - *once the delete button is clicked, it will __completely delete__ the record from the database and this is considered __bad practice__. Therefore __defensive programming__ and __user authentication__ should be considered.*
 
+---
 
+## Adding tasks
+
+The `add_task.html` template will trigger the form to submit via the `add_task()` function, and insert the new record into our database.
+
+- in `tasks.html` create a button that will link the form to add a new task
+- update links for task page in `base.html`
+- in `routes.py` create `add_task()` function
+- create `add_task.html` template
+- in `script.js` initialize Materialize "select" and "datepicker" form elements
+
+---
+
+## Viewing tasks
 
 ---
 
