@@ -30,16 +30,15 @@ This is a [Code Institute](https://codeinstitute.net/) code along project design
     - `psql`
     - `CREATE DATABASE taskmanager`
 - use Python to generate and migrate the 2 models into `taskmanager` database.
-
-*__Important__ - if you modify the models later, then you'll need to migrate these changes each time the file is updated with new context.*
-
     - access the Python interpreter by typing `python3`
     - import the 'db' variable found within the taskmanager package: `>>> from taskmanager import db`
     - perform the .create_all() method: `>>> db.create_all()`
     - exit the Python interpreter: `>>> exit()`
 
+*__Important__ - if you modify the models later, then you'll need to migrate these changes each time the file is updated with new context.*
+
 ---
-Collapse 
+ 
 ## Template inheritance
 
 Creating the front-end user interface in [Materialize](https://materializecss.com/) to interact with the database. Template inheritance was used to extend the html templates, to avoid duplicating code.
@@ -50,7 +49,7 @@ Creating the front-end user interface in [Materialize](https://materializecss.co
 - add components from Materialize
     - a mobile collapse navbar - initialize side navbar in js
     - a footer - create sticky footer in css
-- start using template inheritance functionality using [jinja](https://palletsprojects.com/p/jinja/) blocks to inject content
+- start using template inheritance functionality using [Jinja](https://palletsprojects.com/p/jinja/) blocks to inject content
 ```
 {% extends "base_template_file" %}
 
@@ -59,13 +58,15 @@ Creating the front-end user interface in [Materialize](https://materializecss.co
 {% endblock %}
 ```
 
+*__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
 ---
 
 ## Adding categories
 
-Before tasks can be added to the database, we need to have some functionality that handles the categories. 
+Before tasks can be added to the database, we need to have some "create" functionality that handles the categories. 
 
-Building the front-end template that then allows to add new categories to the database.
+Building the front-end template that allows to add new categories to the database.
 - create `categories.html` and `add_category.html` templates
 - extend the 2 templates from `base.html` template
 - create a button that will link the form to add a new category in `categories.html`
@@ -75,6 +76,23 @@ Building the front-end template that then allows to add new categories to the da
     - create an input field for `category name`
     - create an `ADD CATEGORY` submit button
 - in `routes.py` create the `POST` method functionality
+
+*__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
+---
+
+## Viewing categories
+
+Once a category is cretated we need to be able to display it to the user in the "categories" page. To do that we need to create the "read" functionality.
+
+- from Materialize, import the code for "basic card" into `categories.html`
+- adapt the code to suit the project
+- edit the links into `EDIT` and `DELETE` buttons
+- in `routes.py` build the code that extracts data from database
+- in `categories.html` use Jinja syntax of for-loop to display multiple cards
+- add more categories to test the functionality
+
+*__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
 
 ---
 

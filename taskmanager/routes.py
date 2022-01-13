@@ -13,7 +13,9 @@ def home():
 @app.route("/categories")
 def categories():
     """ populate the new categories template """
-    return render_template("categories.html")
+    # add code to query the db to be used in categories template
+    categories = list(Category.query.order_by(Category.category_name).all())
+    return render_template("categories.html", categories=categories)
 
 
 # we need to include a list of the two methods "GET" and "POST", since we will
