@@ -138,6 +138,8 @@ The `add_task.html` template will trigger the form to submit via the `add_task()
 - create `add_task.html` template
 - in `script.js` initialize Materialize "select" and "datepicker" form elements
 
+*__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
 ---
 
 ## Viewing tasks
@@ -148,6 +150,8 @@ Once a Task is cretated we need to be able to display it to the user in the "Hom
 - in `tasks.html` template import code for collapsables form Materialize and adapt it accordingly
 - in `tasks.html` template use Jinja syntax of for-loop to iterate over each task within our list of all tasks
 - in `script.js` initialize "collapsibles" elements form Materialize
+
+*__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
 
 ---
 
@@ -162,6 +166,21 @@ Now that we have the ability to create and retrieve tasks, we need to be able to
 - modify `edit_task.html` to conditionally check to see if 'is_urgent' toggle is set to True, and if so, add the 'checked' attribute
 - modify `edit_task.html` for the 'category' selection (our current for-loop is building an option for each category in our database) to conditionally check to see if the current iteration of categories matches the actual task category that is updating
 - modify `edit_task.html` for the textarea to remove the white space by using Jinja helper elements
+
+*__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
+---
+
+## Deleting tasks
+
+Now that we have 3 of the 4 CRUD functionalities, to Create, Read, and Update records from our database, we need to give the users the ability to delete a Task.
+
+- modify `tasks.html` to add a "DELETE" button
+- in `routes.py` create `delete_task()` function
+
+*__Important__*
+- *don't forget to use `set_pg` before you start the app with `python3 run.py`*
+- *once the delete button is clicked, it will __completely delete__ the record from the database and this is considered __bad practice__. Therefore __defensive programming__ and __user authentication__ should be considered.*
 
 ---
 
