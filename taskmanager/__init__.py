@@ -1,5 +1,7 @@
 """ initialization file """
 import os
+# import the Regular Expression package
+import re
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -16,10 +18,13 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 # add a conditional check for Heroku's Postgres database
-if os.environ.get("DEVELOPMENT") == True:
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
+if os.environ.get("DEVELOPMENT") == "True":
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")  # local
 else:
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+    uri = os.environ.get("DATABASE_URL")
+    if uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
+    app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
 
 # Create an instance of the imported SQLAlchemy() class
 db = SQLAlchemy(app)
