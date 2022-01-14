@@ -151,4 +151,18 @@ Once a Task is cretated we need to be able to display it to the user in the "Hom
 
 ---
 
+## Updating Tasks
+
+Now that we have the ability to create and retrieve tasks, we need to be able to update a task as well.
+- duplicate `add_task.html` into `edit_task.html` and modify it accordingly
+- in `routes.py` create `edit_task()` function
+- in `tasks.html` template, within the 'collapsible-body' element add another paragraph tag that contains a link, styled like a button
+- in `edit_task.html` modify form's action link
+- modify `edit_task.html` to add the existing values into their respective fields
+- modify `edit_task.html` to conditionally check to see if 'is_urgent' toggle is set to True, and if so, add the 'checked' attribute
+- modify `edit_task.html` for the 'category' selection (our current for-loop is building an option for each category in our database) to conditionally check to see if the current iteration of categories matches the actual task category that is updating
+- modify `edit_task.html` for the textarea to remove the white space by using Jinja helper elements
+
+---
+
 *Disclaimer: this is a code along project from [Code Institute](https://codeinstitute.net/)'s **Database Management Systems** module*
