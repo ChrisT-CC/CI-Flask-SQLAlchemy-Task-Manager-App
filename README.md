@@ -184,4 +184,54 @@ Now that we have 3 of the 4 CRUD functionalities, to Create, Read, and Update re
 
 ---
 
+## Deploying the project to Heroku
+
+Unfortunately, deploying to GitHub Pages won't work, since it can only handle front-end files
+such as HTML, CSS, and JavaScript. So the project needs to be deployed to a hosting platform that can render Python files. One such platform is [Heroku](https://id.heroku.com/login).
+
+- in `requirements.txt` set up the files required by Heroku to run the app:
+
+        `pip3 freeze --local > requirements.txt`
+
+- use `echo web: python run.py > Procfile` to create the Procfile which is what Heroku looks for to know which file runs the app, and how to
+run it
+- delete the empty line at the end of Procfile file
+- add, commit and push the 2 files to GitHub
+- sign up / login to [Heroku](https://id.heroku.com/login) website
+- create a new app
+- create a new database that [Heroku](https://id.heroku.com/login) can host
+
+        *Due to the fact that our database is stored locally in Postgres on our workspace, Heroku cannot see this data.
+        Depending on what data you're storing within your database, such as user accounts and personal information, it's recommended to not migrate your existing database to Heroku. 
+        Although it is possible, you could risk accidentally exposing confidential data on your GitHub account, if not done properly.*
+
+- in `Resouces` tab underneath the `Add-ons` section type `heroku postgress`
+- choose `Hobby Dev - Free` option
+- in `Settings` press `Reveal Config Vars` and add the other variables that are currently saved within our `env.py` file. Don't include "DEVELOPMENT" and "DB_URL" variables.
+- modify the initialization file `__init__.py` to add a conditional check for Heroku's Postgres database. If the "DEVELOPMENT" environment variable is set to "True", then we are working with our local database. Otherwise, since we didn't set that variable on Heroku, then it should use Heroku's "DATABASE_URL" instead.
+- in heroku app under `Deploy` tab choose "Deployment method" as "GitHub"
+- choose Repository name and click `Connect`
+- choose `Enable Automatic Deploys`
+- Choose `Deploy Branch`
+- if your DATABASE_URL starts with ‘postgres’ instead of ‘postgresql’, then we need to add one extra bit of code to the `__init__.py` file, since we cannot edit this variable
+- add, commit and push `__init__.py` file to GitHub
+- create the 2 tables on the database in Heroku:
+    - choose `more` and `Run console`
+    - type `python3` to access the Python interpreter
+    - `from taskmanager import db`
+    - `create_all()`
+    - `exit()`
+- everything should be linked up properly now, so we can finally click on the `Open App` button
+- repopulate the database
+ 
+*__Important__*
+- *__Remember__, whenever you add additional packages to your project, you must update the **requirements.txt** file for __Heroku__*
+- *The local IDE database and the Heroku database are two completely separate databases.*
+        
+        Something to consider when building your milestone projects, is to only use fake or temporary data during the development stages.
+        Get your project working functionally first, and then, once you've got the app deployed on Heroku, you can start to work with the real data on your Heroku database.
+- *__Make sure__ to set "DEBUG" variable to "False" prior to submitting any ilestone projects for assessment. The only reason we want "DEBUG" to be "True" temporarily, is to check for any possible errors during setup and deployment.*
+- *__Remember__, if you make any changes to your models anytime during development once deployed to Heroku, you will need to make these migrations once again in this Heroku console*
+---
+
 *Disclaimer: this is a code along project from [Code Institute](https://codeinstitute.net/)'s **Database Management Systems** module*
