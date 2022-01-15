@@ -1,11 +1,37 @@
-# Task Manager App
+# [Task Manager App](http://flask-sqlalchemy-taskmanagercc.herokuapp.com/)
 
-This task manager is built using Flask, the SLQAlchemy ORM, and Materialize frontend framework.
+This is a task manager app and is built using Flask, the SLQAlchemy ORM, and Materialize frontend framework..
+
+In the home page a summary of tasks is displayed. Each of them has the task name, due date, whether or not it's an urgent task. Once we click to expand more, we see the task category, and a description.
+
+Users will be able to create new tasks, view their tasks, edit tasks, delete their tasks and the same for categories.
+
+![Mockup image](taskmanager/images/task-manager-app-mockup.jpg)
+
+## Table of contents
+
+1. [Learning outcomes](#Learning-outcomes)
+1. [Set up basic Flask app](#Set-up-basic-Flask-app)
+1. [Creating the database](#Creating-the-database)
+1. [Template inheritance](#Template-inheritance)
+1. [Adding categories](#Adding-categories)
+1. [Viewing categories](#Viewing-categories)
+1. [Updating categories](#Updating-categories)
+1. [Deleting categories](#Deleting-categories)
+1. [Adding tasks](#Adding-tasks)
+1. [Viewing tasks](#Viewing-tasks)
+1. [Updating Tasks](#Updating-Tasks)
+1. [Deleting tasks](#Deleting-tasks)
+1. [Deploying the project to Heroku](#Deploying-the-project-to-Heroku)
+
+## Learning outcomes
 
 This is a [Code Institute](https://codeinstitute.net/) code along project designed to learn:
 - how to perform full CRUD functionality, which allows to create, read, update, and delete items on database
 - how to create HTML-based user interfaces to demonstrate CRUD calls in action
 - how to style these interfaces using the Materialize framework
+
+[Back to top](#Table-of-contents)
 
 ---
 
@@ -19,9 +45,15 @@ This is a [Code Institute](https://codeinstitute.net/) code along project design
 - create `base.html` template in `templates` folder (which is where Flask looks for any HTML templates to be rendered) within the taskmanager package 
 - create the main Python file `run.py` that will actually run the entire application. This will be at the root level of the workspace, not part of the taskmanager package itself.
 
+[Back to top](#Table-of-contents)
+
 ---
 
 ## Creating the database
+
+The data base if formed of 2 tables: "Category" and "Task"
+
+![Database](taskmanager/images/taskmanager-database.jpg)
 
 - create the new `models.py` file within the taskmanager package. In it, create 2 separate tables, Category and Task
 - import the 2 classes for the tables in `routes.py`
@@ -36,6 +68,8 @@ This is a [Code Institute](https://codeinstitute.net/) code along project design
     - exit the Python interpreter: `>>> exit()`
 
 *__Important__ - if you modify the models later, then you'll need to migrate these changes each time the file is updated with new context.*
+
+[Back to top](#Table-of-contents)
 
 ---
  
@@ -60,11 +94,15 @@ Creating the front-end user interface in [Materialize](https://materializecss.co
 
 *__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
 
+[Back to top](#Table-of-contents)
+
 ---
 
 ## Adding categories
 
-Before tasks can be added to the database, we need to have some "create" functionality that handles the categories. 
+![Adding categories](taskmanager/images/add-category.jpg)
+
+Before tasks can be added to the database, we need to have some "Create" functionality that handles the categories. 
 
 Building the front-end template that allows to add new categories to the database.
 - create `categories.html` and `add_category.html` templates
@@ -79,9 +117,13 @@ Building the front-end template that allows to add new categories to the databas
 
 *__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
 
+[Back to top](#Table-of-contents)
+
 ---
 
 ## Viewing categories
+
+![Viewing categories](taskmanager/images/view-categories.jpg)
 
 Once a category is cretated we need to be able to display it to the user in the "categories" page. To do that we need to create the "Read" functionality.
 
@@ -93,6 +135,8 @@ Once a category is cretated we need to be able to display it to the user in the 
 - add more categories to test the functionality
 
 *__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
+[Back to top](#Table-of-contents)
 
 ---
 
@@ -113,6 +157,8 @@ Now that we have the ability to create and retrieve categories, we need to be ab
 
 *__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
 
+[Back to top](#Table-of-contents)
+
 ---
 
 ## Deleting categories
@@ -126,9 +172,13 @@ Now that we have 3 of the 4 CRUD functionalities, to Create, Read, and Update re
 - *don't forget to use `set_pg` before you start the app with `python3 run.py`*
 - *once the delete button is clicked, it will __completely delete__ the record from the database and this is considered __bad practice__. Therefore __defensive programming__ and __user authentication__ should be considered.*
 
+[Back to top](#Table-of-contents)
+
 ---
 
 ## Adding tasks
+
+![Adding tasks](taskmanager/images/add-task.jpg)
 
 The `add_task.html` template will trigger the form to submit via the `add_task()` function, and insert the new record into our database.
 
@@ -139,6 +189,8 @@ The `add_task.html` template will trigger the form to submit via the `add_task()
 - in `script.js` initialize Materialize "select" and "datepicker" form elements
 
 *__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
+[Back to top](#Table-of-contents)
 
 ---
 
@@ -152,6 +204,8 @@ Once a Task is cretated we need to be able to display it to the user in the "Hom
 - in `script.js` initialize "collapsibles" elements form Materialize
 
 *__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
+
+[Back to top](#Table-of-contents)
 
 ---
 
@@ -169,6 +223,8 @@ Now that we have the ability to create and retrieve tasks, we need to be able to
 
 *__Important__ - don't forget to use `set_pg` before you start the app with `python3 run.py`*
 
+[Back to top](#Table-of-contents)
+
 ---
 
 ## Deleting tasks
@@ -181,6 +237,8 @@ Now that we have 3 of the 4 CRUD functionalities, to Create, Read, and Update re
 *__Important__*
 - *don't forget to use `set_pg` before you start the app with `python3 run.py`*
 - *once the delete button is clicked, it will __completely delete__ the record from the database and this is considered __bad practice__. Therefore __defensive programming__ and __user authentication__ should be considered.*
+
+[Back to top](#Table-of-contents)
 
 ---
 
@@ -226,12 +284,14 @@ run it
  
 *__Important__*
 - *__Remember__, whenever you add additional packages to your project, you must update the **requirements.txt** file for __Heroku__*
-- *The local IDE database and the Heroku database are two completely separate databases.*
-        
-        Something to consider when building your milestone projects, is to only use fake or temporary data during the development stages.
-        Get your project working functionally first, and then, once you've got the app deployed on Heroku, you can start to work with the real data on your Heroku database.
-- *__Make sure__ to set "DEBUG" variable to "False" prior to submitting any ilestone projects for assessment. The only reason we want "DEBUG" to be "True" temporarily, is to check for any possible errors during setup and deployment.*
+- *The local IDE database and the Heroku database are two completely separate databases.*   
+    - Something to consider when building your milestone projects, is to only use fake or temporary data during the development stages. 
+    Get your project working functionally first, and then, once you've got the app deployed on Heroku, you can start to work with the real data on your Heroku database.
+- *__Make sure__ to set "DEBUG" variable to "False" prior to submitting any milestone projects for assessment. The only reason we want "DEBUG" to be "True" temporarily, is to check for any possible errors during setup and deployment.*
 - *__Remember__, if you make any changes to your models anytime during development once deployed to Heroku, you will need to make these migrations once again in this Heroku console*
+
+[Back to top](#Table-of-contents)
+
 ---
 
 *Disclaimer: this is a code along project from [Code Institute](https://codeinstitute.net/)'s **Database Management Systems** module*
